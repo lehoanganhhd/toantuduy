@@ -22,23 +22,23 @@ function dttheme_register_required_plugins() {
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
 		array(
-			'name'     				=> 'DesignThemes Core  Shortcode Plugins', // The plugin name
+			'name'     				=> __('DesignThemes Core  Shortcode Plugins', 'dt_themes'), // The plugin name
 			'slug'     				=> 'designthemes-core-features', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/framework/plugins/designthemes-core-features.zip', // The plugin source
+			'source'   				=> get_template_directory() . '/framework/plugins/designthemes-core-features.zip', // The plugin source
 			'version' 				=> '1.3',
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
 			'force_activation' 		=> true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 		),
 		array(
-			'name'     				=> 'Visual Composer',
+			'name'     				=> __('Visual Composer', 'dt_themes'),
 			'slug'     				=> 'js_composer',
 			'source'   				=> 'https://s3.amazonaws.com/wedesignthemes/premium/js_composer.zip',
 			'version' 				=> '4.12.1',
 		),
 				
 		array(
-			'name'     				=> 'Layer Slider',
+			'name'     				=> __('Layer Slider', 'dt_themes'),
 			'slug'     				=> 'LayerSlider',
 			'source'   				=> 'https://s3.amazonaws.com/wedesignthemes/premium/LayerSlider.zip',
 			'version'				=>	'5.6.9',
@@ -46,49 +46,55 @@ function dttheme_register_required_plugins() {
 		),
 
 		array(
-			'name'     				=> 'Revolution Slider',
+			'name'     				=> __('Revolution Slider', 'dt_themes'),
 			'slug'     				=> 'revslider',
 			'source'   				=> 'https://s3.amazonaws.com/wedesignthemes/premium/revslider.zip',
 			'version'				=> '5.2.6'
 		),
 
 		array(
-			'name'     				=> 'Responsive Google Maps',
+			'name'     				=> __('Responsive Google Maps', 'dt_themes'),
 			'slug'     				=> 'responsive-maps-plugin',
-			'source'   				=> 'http://dlw.press/plugins/z/a/responsive-maps-plugin.zip',
+			'source'   				=> 'https://s3.amazonaws.com/wedesignthemes/premium/responsive-maps-plugin.zip',
 			'version'				=> '4.0'
 		),
 
 		array(
-			'name' 					=> 'Envato Market',
+			'name' 					=> __('Envato Market', 'dt_themes'),
 			'slug' 					=> 'envato-market',
 			'source'				=> 'http://envato.github.io/wp-envato-market/dist/envato-market.zip',
 			'required' 				=> false,
 		),		
 
 		array(
-			'name' 		=> 'Contact Form 7',
+			'name' 		=> __('Contact Form 7', 'dt_themes'),
 			'slug' 		=> 'contact-form-7',
 			'required' 	=> false,
 		),
 
 		array(
-			'name'		=>	'WooCommerce - excelling eCommerce',
+			'name'		=>	__('WooCommerce - excelling eCommerce', 'dt_themes'),
 			'slug'		=>	'woocommerce',
 			'required'	=>	false
 		),
 
 		array(
-			'name'		=>	'YITH WooCommerce Wishlist',
+			'name'		=>	__('YITH WooCommerce Wishlist', 'dt_themes'),
 			'slug'		=>	'yith-woocommerce-wishlist',
 			'required'	=>	false
 		),
 
 		array(
-			'name'		=>	'YITH WooCommerce Zoom Magnifier',
+			'name'		=>	__('YITH WooCommerce Zoom Magnifier', 'dt_themes'),
 			'slug'		=>	'yith-woocommerce-zoom-magnifier',
 			'required'	=>	false
-		)
+		),
+
+		array(
+			'name' 					=> __('Unyson', 'dt_themes'),
+			'slug' 					=> 'unyson',
+			'required' 				=> false,
+		)		
 	);
 
     /**

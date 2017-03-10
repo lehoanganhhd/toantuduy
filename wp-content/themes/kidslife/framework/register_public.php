@@ -499,15 +499,32 @@ function dttheme_appearance_css() {
 		endif;
 	}#Top Bar Color
 	
-	#Headar Color
+	#Headar Background Settings
 	$disable_header = dttheme_option("appearance", 'disable-header-settings');
 	if( empty($disable_header) ){
-		#Header BG Color
-		$header_bg_color = dttheme_option("appearance", "header-bg-color");
-		if( !empty($header_bg_color) and $header_bg_color != "#"  ):
-			$output .= "\r\t #header, .main-menu-wrapper { background-color:{$header_bg_color} } \r\t";
-		endif;
-	}#Header Color End
+		
+			$bg = dttheme_option("appearance","header-bg");
+			$bg_repeat = dttheme_option("appearance","header-bg-repeat");
+			$bg_position =  dttheme_option("appearance","header-bg-position");
+			$bg_opacity = dttheme_option("appearance","header-bg-opacity");
+			$bg_color = dttheme_option("appearance", "header-bg-color");
+			
+			$output .= "\r\t header {";
+				if(!empty($bg)) {
+					$output .= "background-image:url($bg);";
+					$output .= "background-repeat:$bg_repeat;";
+					$output .= "background-position:$bg_position;";
+				}
+				
+				if(!empty($bg_opacity)){
+					$color = hex2rgb($bg_color);
+					$output .= "background-color:rgba($color[0],$color[1],$color[2],$bg_opacity);";
+				}else{
+					$output .= "background-color:$bg_color;";
+				}
+
+			$output .= "}\r\t";
+	}
 
 	#Menu Section
 	$disable_menu = dttheme_option("appearance", "disable-menu-settings");

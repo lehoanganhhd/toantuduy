@@ -118,75 +118,80 @@
             </div><!-- **Post Nav - End** -->
 		</article><!-- #post-<?php the_ID()?> Ends -->
 
-		<?php if(array_key_exists("show-related-items",$tpl_default_settings)) : ?>
-			<!-- Related Posts Start -->
+		<?php if(array_key_exists("show-related-items",$tpl_default_settings)) :
+				$rp_title = dttheme_option('specialty','rp-title');?>
+				<!-- Related Posts Start -->
 				<div class="dt-sc-hr-invisible"></div>
-				<h2 class="dt-sc-hr-title"><?php _e('Related Projects','dt_themes');?></h2><?php
-
-				$category_ids = array();
-				$input  = wp_get_object_terms( $post->ID, 'dt_portfolio_entries');
-				foreach($input as $category) $category_ids[] = $category->term_id;
-
-				$args = array(	'orderby' => 'rand',
-					'showposts' => '4' ,
-					'post__not_in' => array($post->ID),
-					'tax_query' => array(
-						array( 
-							'taxonomy'=>'dt_portfolio_entries',
-							'field'=>'id',
-							'operator'=>'IN',
-							'terms'=>$category_ids
-						)
+                	<?php if( !empty( $rp_title ) ): ?>
+                    		<h2 class="dt-sc-hr-title"><?php echo $rp_title; ?></h2><?php
+						  endif;
+						  
+					$category_ids = array();
+					$input  = wp_get_object_terms( $post->ID, 'dt_portfolio_entries');
+					
+					foreach($input as $category) $category_ids[] = $category->term_id;
+					
+					$args = array(	'orderby' => 'rand',
+						'showposts' => '4' ,
+						'post__not_in' => array($post->ID),
+						'tax_query' => array(
+							array( 
+								'taxonomy'=>'dt_portfolio_entries',
+								'field'=>'id',
+								'operator'=>'IN',
+								'terms'=>$category_ids
+							)
 					));
-				query_posts($args);
-				if( have_posts() ) :
-					$count = 1;
-					while( have_posts() ) :
-						the_post();
-						$the_id = get_the_ID();
-						$first = ( $count === 1 ) ? " first" : "";
+					
+					query_posts($args);
+					if( have_posts() ) :
+						$count = 1;
+						while( have_posts() ) :
+							the_post();
+							$the_id = get_the_ID();
+							$first = ( $count === 1 ) ? " first" : "";
 
-						$portfolio_item_meta = get_post_meta($the_id,'_portfolio_settings',TRUE);
-	                    $portfolio_item_meta = is_array($portfolio_item_meta) ? $portfolio_item_meta  : array();
+							$portfolio_item_meta = get_post_meta($the_id,'_portfolio_settings',TRUE);
+		                    $portfolio_item_meta = is_array($portfolio_item_meta) ? $portfolio_item_meta  : array();
 
-	                    $popup = $image = "//placehold.it/1170x1010&text=DesignThemes";
-	                    if( array_key_exists('items_name', $portfolio_item_meta) ) {
-	                    	$item =  $portfolio_item_meta['items_name'][0];
-	                    	$popup = $portfolio_item_meta['items'][0];
+	    	                $popup = $image = "//placehold.it/1170x1010&text=DesignThemes";
+	        	            if( array_key_exists('items_name', $portfolio_item_meta) ) {
+	            	        	$item =  $portfolio_item_meta['items_name'][0];
+	                	    	$popup = $portfolio_item_meta['items'][0];
 
-	                    	if( "video" === $item ) {
-	                    		$items = array_diff( $portfolio_item_meta['items_name'] , array("video") );
-	                    		if( !empty($items) ) {
-	                    			$image = $portfolio_item_meta['items'][key($items)];
-	                        	} else {
-	                        		$image = "//placehold.it/1170x1010&text=DesignThemes";
-	                        	}
-	                        } else {
-	                        	$image = $portfolio_item_meta['items'][0];
-	                        }
-	                    }?>
-	                    <div id="<?php echo esc_attr("dt_portfolios-{$the_id}");?>" class="portfolio dt-sc-one-fourth column <?php echo esc_attr($first);?>">
-	                    	<div class="portfolio-thumb">
-	                    		<img class="item-mask" src="<?php  echo esc_url( get_template_directory_uri() );?>/images/portfolio-mask.png" alt="" title="">
-	                    		<img src="<?php echo esc_url($image);?>" alt="" title="" width="1170" height="1010">
-	                    			<div class="image-overlay">
-	                    				<a href="<?php the_permalink();?>" title="" class="link"> <span class="fa fa-link"> </span> </a>
-	                    				<a href="<?php echo $popup;?>" data-gal="prettyPhoto[gallery]" class="zoom"><span class="fa fa-search"></span></a>
-	                    			</div>
-	                        </div>
-	                        <div class="portfolio-detail">
-	                        	<div class="portfolio-title">
-	                        		<h5><a href="<?php the_permalink();?>" title="<?php printf( esc_attr__('%s'), the_title_attribute('echo=0'));?>"><?php the_title();?></a></h5>
-	                        		<?php the_terms( $the_id, 'dt_portfolio_entries', '<p>', ' , ','</p>' ); ?>
-	                        	</div>
-	                        </div>
-	                    </div>
-	                    <?php $count++;
-					endwhile;
-				endif;
-				wp_reset_query();?>
-			<!-- Related Posts End -->
-		<?php endif;?>
+	                    		if( "video" === $item ) {
+	                    			$items = array_diff( $portfolio_item_meta['items_name'] , array("video") );
+	                    			if( !empty($items) ) {
+	                    				$image = $portfolio_item_meta['items'][key($items)];
+		                        	} else {
+		                        		$image = "//placehold.it/1170x1010&text=DesignThemes";
+	    	                    	}
+	        	                } else {
+	            	            	$image = $portfolio_item_meta['items'][0];
+	                	        }
+	                    	}?>
+                            <div id="<?php echo esc_attr("dt_portfolios-{$the_id}");?>" class="portfolio dt-sc-one-fourth column <?php echo esc_attr($first);?>">
+                            	<div class="portfolio-thumb">
+		                    		<img class="item-mask" src="<?php  echo esc_url( get_template_directory_uri() );?>/images/portfolio-mask.png" alt="" title="">
+		                    		<img src="<?php echo esc_url($image);?>" alt="" title="" width="1170" height="1010">
+	    	                			<div class="image-overlay">
+	        	            				<a href="<?php the_permalink();?>" title="" class="link"> <span class="fa fa-link"> </span> </a>
+	            	        				<a href="<?php echo $popup;?>" data-gal="prettyPhoto[gallery]" class="zoom"><span class="fa fa-search"></span></a>
+	                	    			</div>
+	                    	    </div>
+	                        	<div class="portfolio-detail">
+	                        		<div class="portfolio-title">
+	                        			<h5><a href="<?php the_permalink();?>" title="<?php printf( esc_attr__('%s'), the_title_attribute('echo=0'));?>"><?php the_title();?></a></h5>
+		                        		<?php the_terms( $the_id, 'dt_portfolio_entries', '<p>', ' , ','</p>' ); ?>
+		                        	</div>
+	    	                    </div>
+	        	            </div><?php
+							$count++;
+						endwhile;
+					endif;
+					wp_reset_query();?>
+				<!-- Related Posts End -->
+			<?php endif;?>
 	</section>
 	<!-- ** Primary Section End ** -->
 

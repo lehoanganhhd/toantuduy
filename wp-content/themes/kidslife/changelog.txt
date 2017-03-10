@@ -1,3 +1,7 @@
+======================================
+|P.O.S.T.E.D BY G.A.N.J.A.P.A.R.K.E.R|
+======================================
+
 = Kids Life - A Trendy Kids Responsive WordPress Theme =
 
 12-02-2015 - version 1.0
@@ -68,3 +72,12 @@
 * Global page, post layout option
 * Updated DesignThemes Core Plugin
 * 4 New Headers added
+
+2016.11.24 - version 1.6.1
+* Page Builder Fix
+
+2016.12.16 - version 1.6.2
+* Compatible with WordPress 4.7
+* Demo content with Unyson
+* Added Header Background Settings
+* Fixed Bugs

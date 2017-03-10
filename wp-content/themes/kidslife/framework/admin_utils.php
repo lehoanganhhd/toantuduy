@@ -103,6 +103,7 @@ function dttheme_default_option() {
 		"404-layout" => "content-full-width",
 		"archives-layout" => "content-full-width",
 		"archives-post-layout" => "one-half-column",
+		"rp-title" => 'Related Projects',
 		"404-message" => '<h2> <span class="fa fa-meh-o"></span> 404! </h2>
             <h3> The page you are looking for is Not Found! </h3>
             <p>Etiam sit amet orci eget eros faucibus tincidunt. Duis kalam <br> stefen kajas in the enter leo. Sed fringilla mauris sit amet nibh. </p>');

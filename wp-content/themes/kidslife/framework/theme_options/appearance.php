@@ -45,7 +45,84 @@
                   </ul>
                   <input id="mytheme[appearance][header-type]" name="mytheme[appearance][header-type]" type="hidden" value="<?php echo dttheme_option('appearance','header-type');?>"/>
                </div>
+
+               <div class="clear"></div>               
+               <div class="hr_invisible"> </div>
+               <div class="hr_invisible"> </div>
+               <div class="hr_invisible"> </div>
+               <div class="hr"> </div>
+               
+               <!-- Header BG -->
+               <div class="bpanel-option-set">
+               	<h6><?php _e('Disable Header Background Settings','dt_themes');?></h6>
+                <?php dttheme_switch("",'appearance','disable-header-settings');?>
+                <p class="note"> <?php _e('Enable or Disable header background apperance settings.','dt_themes');?>  </p>                        
+               </div>
                <div class="clear"></div>
+                               
+               <h6><?php _e("Header Background",'dt_themes');?></h6>
+               <div class="clear"></div>
+               <div class="image-preview-container">
+               	<input id="mytheme-header-bg" name="mytheme[appearance][header-bg]" type="text" class="uploadfield medium" readonly="readonly" value="<?php echo dttheme_option('appearance','header-bg');?>"/>
+                <input type="button" value="<?php esc_attr_e('Upload','dt_themes');?>" class="upload_image_button show_preview" />
+                <input type="button" value="<?php esc_attr_e('Remove','dt_themes');?>" class="upload_image_reset" />
+                <?php dttheme_adminpanel_image_preview(dttheme_option('appearance','header-bg'));?>
+                </div>
+                <div class="hr_invisible"> </div>
+                
+                <div class="column one-half">
+                	<div class="bpanel-option-set">
+                    	<label><?php _e('BG Repeat','dt_themes');?></label>
+                        <div class="clear"></div>
+                        <select name="mytheme[appearance][header-bg-repeat]">
+                        	<option value=""><?php _e("Select",'dt_themes');?></option><?php
+							$options = array("repeat","repeat-x","repeat-y","no-repeat");
+							foreach( $options as $option ):?>
+                            	<option value="<?php echo $option;?>" <?php selected($option,dttheme_option('appearance','header-bg-repeat')); ?>><?php echo $option;?></option><?php
+							endforeach;?>
+                        </select>
+                        <p class="note"><?php _e("Select how would you like to repeat the background image",'dt_themes');?></p>
+                        <div class="hr_invisible"> </div>
+                    </div>
+                </div>
+
+                <div class="column one-half last">
+                	<div class="bpanel-option-set">
+                    	<label><?php _e('BG Position','dt_themes');?></label>
+                        <div class="clear"></div>
+                        <select name="mytheme[appearance][header-bg-position]">
+                        	<option value=""><?php _e("Select",'dt_themes');?></option><?php
+							$options = array("top left","top center","top right","center left","center center","center right","bottom left","bottom center","bottom right");
+							foreach( $options as $option ):?>
+                            	<option value="<?php echo $option;?>" <?php selected($option,dttheme_option('appearance','header-bg-position')); ?>><?php echo $option;?></option><?php
+							endforeach;?>
+                        </select>
+                        <p class="note"><?php _e("Select how would you like to position the background image",'dt_themes');?></p>
+                        <div class="hr_invisible"> </div>
+                    </div>
+                </div>
+                
+                <div class="hr_invisible"> </div>
+                <div class="hr_invisible"> </div>
+                
+                <div class="column one-half"><?php 
+					$label = __("BG Color",'dt_themes');
+					$name  =		"mytheme[appearance][header-bg-color]";
+					$value =  	(dttheme_option('appearance','header-bg-color') != NULL) ? dttheme_option('appearance','header-bg-color') : "#";
+					$tooltip = 	__("Pick a custom background color for the header e.g. #564912",'dt_themes'); ?>
+                    <h6><?php echo $label;?></h6>	
+                    <?php dttheme_admin_color_picker("",$name,$value,'');?>  
+                    <p class="note"><?php echo $tooltip;?></p>
+                    <div class="clear"></div>
+                </div>
+                
+                <div class="column one-half bpanel-option-set last">
+					<div class="clear"></div>
+					<?php dttheme_admin_jqueryuislider(__('BG Color Opacity','dt_themes'),"mytheme[appearance][header-bg-opacity]", dttheme_option('appearance',"header-bg-opacity"),'');?>
+                </div>
+               <!-- Header BG -->
+               
+               <div class="clear"></div>               
                <div class="hr_invisible"> </div>
                <div class="hr_invisible"> </div>
                <div class="hr_invisible"> </div>

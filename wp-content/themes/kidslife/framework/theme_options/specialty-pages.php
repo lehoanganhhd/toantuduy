@@ -146,6 +146,20 @@
         	<div id="<?php echo $id;?>" class="tab-content">
             	 <div class="bpanel-box">
                  
+                 	<?php if( $id == 'gallery-archives' ): ?>
+                    	<div class="box-title"><h3><?php echo __("Portfolio Single",'dt_themes');?></h3></div>
+                        <div class="box-content">
+                        	<h6><?php _e('Related Project Title','dt_themes');?></h6>
+                            <?php $rp_title = dttheme_option('specialty','rp-title'); ?>
+                            <div class="column one-half">
+                            	<input name="mytheme[specialty][rp-title]" type="text" value="<?php echo $rp_title; ?>" />
+                        	</div>
+                            <div class="column one-half last">
+                            	<p class="note no-margin"><?php _e('Enter custom title for Related Project in single portfolio page.','dt_themes'); ?></p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                 
                  	<!-- Section 1 -->	
                     <div class="box-title"><h3><?php echo $tab['layout-title'];?></h3></div>
                     <div class="box-content">
